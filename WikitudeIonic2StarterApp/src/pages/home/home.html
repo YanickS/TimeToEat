@@ -1,39 +1,82 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Time to eat</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Wikitude / IONIC2 Starter App</h2>
-   
-  <ion-card>
+  <div class="entete">
+    <h2>Liste des restaurants</h2>
+    <h5>dans un rayon de <span class="distanceSelected">500m</span></h5>
+  </div>
+  
+  <div class="liste_restaurants">
+    <ul class="list">
+      <li class="item restaurant">
+        <div class="restaurant_details">
+          <span class="restaurant_nom">Bistrot Régent</span>
+          <span class="restaurant_typeCuisine">Cuisine traditionnelle</span>
+        </div>
+        <div class="restaurant_distance">50 m</div>
+      </li>
+      <li class="item restaurant">
+        <div class="restaurant_details">
+          <span class="restaurant_nom">O'Panda</span>
+          <span class="restaurant_typeCuisine">Cuisine asiatique</span>
+        </div>
+        <div class="restaurant_distance">150 m</div>
+      </li>
+      <li class="item restaurant">
+        <div class="restaurant_details">
+          <span class="restaurant_nom">Buffalo Grill</span>
+          <span class="restaurant_typeCuisine">Cuisine traditionnelle</span>
+        </div>
+        <div class="restaurant_distance">200 m</div>
+      </li>
+      <li class="item restaurant">
+        <div class="restaurant_details">
+          <span class="restaurant_nom">Ché moi</span>
+          <span class="restaurant_typeCuisine">Cuisine traditionnelle</span>
+        </div>
+        <div class="restaurant_distance">275 m</div>
+      </li>
+      <li class="item restaurant">
+        <div class="restaurant_details">
+          <span class="restaurant_nom">Couscous-moi</span>
+          <span class="restaurant_typeCuisine">Cuisine marocaine</span>
+        </div>
+        <div class="restaurant_distance">300 m</div>
+      </li>
+      <li class="item restaurant">
+        <div class="restaurant_details">
+          <span class="restaurant_nom">Bistrot Régent</span>
+          <span class="restaurant_typeCuisine">Cuisine traditionnelle</span>
+        </div>
+        <div class="restaurant_distance">50 m</div>
+      </li>
+      <li class="item restaurant">
+        <div class="restaurant_details">
+          <span class="restaurant_nom">O'Panda</span>
+          <span class="restaurant_typeCuisine">Cuisine asiatique</span>
+        </div>
+        <div class="restaurant_distance">150 m</div>
+      </li>
+      <li class="item restaurant">
+        <div class="restaurant_details">
+          <span class="restaurant_nom">Buffalo Grill</span>
+          <span class="restaurant_typeCuisine">Cuisine traditionnelle</span>
+        </div>
+        <div class="restaurant_distance">200 m</div>
+      </li>
+    </ul>
+  </div>
 
-    <ion-card-header>
-      Please remember to:
-    </ion-card-header>
-
-    <ion-card-content>
-      Add the Wikitude Plugin to this project with: <code>ionic plugin add https://github.com/Wikitude/wikitude-cordova-plugin.git</code>
-    </ion-card-content>
-
-    <ion-card-content>
-      Obtain a (free) licence key and add it to <code>src/app/app.component.ts</code>
-    </ion-card-content>
-
-  </ion-card>
-
-  <p>
-    For detailed instructions, please look at the instructions on https://market.ionic.io/starters/wikitude-ionic-2-starter-app
-  </p>
-  <p>
-    For Ionic development, take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
-  <p>
-    To learn more about how to develop your own AR worlds, please look at <code>http://www.wikitude.com/developer/documentation/phonegap</code> 
-  </p>
-  <p>
-    Have fun!
-  </p>
+  <div class="filtre">
+    <div class="list">
+           <ion-range min="1" max="5" step="1" pin="true" snaps="true" [(ngModel)]="brightness">
+             <ion-icon range-left name="pin"></ion-icon>
+             <ion-icon small range-right name="pin"></ion-icon>
+           </ion-range>
+    </div>
+  </div>
 </ion-content>

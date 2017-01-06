@@ -1,3 +1,51 @@
 page-home {
-    
+ 
+}
+
+/** ENTETE **/
+page-home div.entete{
+	height:60px;
+	text-align: center;
+}
+
+page-home div.entete h5{
+	margin:0;
+	color: grey;
+}
+
+/** LISTE **/
+page-home div.liste_restaurants{
+	height:calc(100% - 140px);
+}
+
+page-home div.liste_restaurants ul{
+	height:100%;
+	overflow-x:hidden;
+	overflow-y:scroll;
+}
+
+page-home li.restaurant{
+	padding-top:10px;	
+}
+
+page-home li.restaurant div{
+	display:inline-block;
+}
+
+page-home li.restaurant div.restaurant_details span{
+	display:block;
+}
+
+page-home li.restaurant div.restaurant_details span.restaurant_nom{
+	margin-bottom: 5px;
+	font-size: large;
+}
+
+page-home li.restaurant div.restaurant_distance{
+	float: right;
+}
+
+/** FILTER **/
+page-home div.filtre{
+	height:40px;
 }
