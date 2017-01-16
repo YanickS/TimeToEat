@@ -3,89 +3,61 @@ var kMarker_AnimationDuration_Resize = 1000;
 
 function Marker(poiData) {
 
-    /*
-        For creating the marker a new object AR.GeoObject will be created at the specified geolocation. An AR.GeoObject connects one or more AR.GeoLocations with multiple AR.Drawables. The AR.Drawables can be defined for multiple targets. A target can be the camera, the radar or a direction indicator. Both the radar and direction indicators will be covered in more detail in later examples.
-    */
-
     this.poiData = poiData;
     this.isSelected = false;
-
-    /*
-        With AR.PropertyAnimations you are able to animate almost any property of ARchitect objects. This sample will animate the opacity of both background drawables so that one will fade out while the other one fades in. The scaling is animated too. The marker size changes over time so the labels need to be animated too in order to keep them relative to the background drawable. AR.AnimationGroups are used to synchronize all animations in parallel or sequentially.
-    */
-
     this.animationGroup_idle = null;
     this.animationGroup_selected = null;
 
-    // create the AR.GeoLocation from the poi data
+    // Creation AR.GeoLocation avec poiData
     var markerLocation = new AR.GeoLocation(poiData.latitude, poiData.longitude, poiData.altitude);
 
-    // create an AR.ImageDrawable for the marker in idle state
+    // Creation AR.ImageDrawable
     this.markerDrawable_idle = new AR.ImageDrawable(World.markerDrawable_idle, 2.5, {
         zOrder: 0,
         opacity: 1.0,
-        /*
-            To react on user interaction, an onClick property can be set for each AR.Drawable. The property is a function which will be called each time the user taps on the drawable. The function called on each tap is returned from the following helper function defined in marker.js. The function returns a function which checks the selected state with the help of the variable isSelected and executes the appropriate function. The clicked marker is passed as an argument.
-        */
         onClick: Marker.prototype.getOnClickTrigger(this)
     });
-
-    // create an AR.ImageDrawable for the marker in selected state
     this.markerDrawable_selected = new AR.ImageDrawable(World.markerDrawable_selected, 2.5, {
         zOrder: 0,
         opacity: 0.0,
         onClick: null
     });
 
-    // create an AR.Label for the marker's title 
+    // Creation AR.Label pour le titre du marker
     this.titleLabel = new AR.Label(poiData.title.trunc(10), 1, {
         zOrder: 1,
         offsetY: 0.55,
-        style: {
-            textColor: '#FFFFFF'
-        }
+        style: { textColor: '#FFFFFF' }
     });
 
-    // create an AR.Label for the marker's description
+    // Creation AR.Label pour la description du marker
     this.descriptionLabel = new AR.Label(poiData.description.trunc(15), 0.8, {
         zOrder: 1,
         offsetY: -0.55,
-        style: {
-            textColor: '#FFFFFF'
-        }
+        style: { textColor: '#FFFFFF' }
     });
 
-    /*
-        Create an AR.ImageDrawable using the AR.ImageResource for the direction indicator which was created in the World. Set options regarding the offset and anchor of the image so that it will be displayed correctly on the edge of the screen.
-    */
+    // Creation de la flèche directionnelle pour indiquer la position d'un marker selectioné
     this.directionIndicatorDrawable = new AR.ImageDrawable(World.markerDrawable_directionIndicator, 0.1, {
         enabled: false,
         verticalAnchor: AR.CONST.VERTICAL_ANCHOR.TOP
     });
 
+    // Création d'un radar pour indiquer la position des points en haut à gauche du téléphone
     this.radarCircle = new AR.Circle(0.03, {
         horizontalAnchor: AR.CONST.HORIZONTAL_ANCHOR.CENTER,
         opacity: 0.8,
-        style: {
-            fillColor: "#ffffff"
-        }
+        style: { fillColor: "#ffffff" }
     });
 
-    this.radarCircleSelected = new AR.Circle(0.05, {
-        horizontalAnchor: AR.CONST.HORIZONTAL_ANCHOR.CENTER,
-        opacity: 0.8,
-        style: {
-            fillColor: "#0066ff"
-        }
-    });
-
+    // Liste des points
     this.radardrawables = [];
+    // Affichage radar
     this.radardrawables.push(this.radarCircle);
-
+    // Liste des points selectioné
     this.radardrawablesSelected = [];
-    this.radardrawablesSelected.push(this.radarCircleSelected);
 
-    // create the AR.GeoObject with the drawable objects
+    // Creation Marjer AR.GeoObject
     this.markerObject = new AR.GeoObject(markerLocation, {
         drawables: {
             cam: [this.markerDrawable_idle, this.markerDrawable_selected, this.titleLabel, this.descriptionLabel],
@@ -98,143 +70,91 @@ function Marker(poiData) {
 }
 
 Marker.prototype.getOnClickTrigger = function(marker) {
-
-    /*
-        The setSelected and setDeselected functions are prototype Marker functions.
-
-        Both functions perform the same steps but inverted, hence only one function (setSelected) is covered in detail. Three steps are necessary to select the marker. First the state will be set appropriately. Second the background drawable will be enabled and the standard background disabled. This is done by setting the opacity property to 1.0 for the visible state and to 0.0 for an invisible state. Third the onClick function is set only for the background drawable of the selected marker.
-    */
-
     return function() {
-
         if (!Marker.prototype.isAnyAnimationRunning(marker)) {
-            if (marker.isSelected) {
-
-                Marker.prototype.setDeselected(marker);
-
-            } else {
+            if (marker.isSelected) { Marker.prototype.setDeselected(marker); } 
+            else {
                 Marker.prototype.setSelected(marker);
-                try {
-                    World.onMarkerSelected(marker);
-                } catch (err) {
-                    alert(err);
-                }
-
+                try { World.onMarkerSelected(marker); } 
+                catch (err) { alert(err); }
             }
-        } else {
-            AR.logger.debug('a animation is already running');
-        }
-
+        } else { AR.logger.debug('Animation en cours'); }
         return true;
     };
 };
 
 Marker.prototype.setSelected = function(marker) {
-
     marker.isSelected = true;
-
-    // New: 
     if (marker.animationGroup_selected === null) {
-
-        // create AR.PropertyAnimation that animates the opacity to 0.0 in order to hide the idle-state-drawable
+        // Marker select/deselect
         var hideIdleDrawableAnimation = new AR.PropertyAnimation(marker.markerDrawable_idle, "opacity", null, 0.0, kMarker_AnimationDuration_ChangeDrawable);
-        // create AR.PropertyAnimation that animates the opacity to 1.0 in order to show the selected-state-drawable
         var showSelectedDrawableAnimation = new AR.PropertyAnimation(marker.markerDrawable_selected, "opacity", null, 1.0, kMarker_AnimationDuration_ChangeDrawable);
-
-        // create AR.PropertyAnimation that animates the scaling of the idle-state-drawable to 1.2
+        // Effets
         var idleDrawableResizeAnimation = new AR.PropertyAnimation(marker.markerDrawable_idle, 'scaling', null, 1.2, kMarker_AnimationDuration_Resize, new AR.EasingCurve(AR.CONST.EASING_CURVE_TYPE.EASE_OUT_ELASTIC, {
             amplitude: 2.0
-        }));
-        // create AR.PropertyAnimation that animates the scaling of the selected-state-drawable to 1.2
-        var selectedDrawableResizeAnimation = new AR.PropertyAnimation(marker.markerDrawable_selected, 'scaling', null, 1.2, kMarker_AnimationDuration_Resize, new AR.EasingCurve(AR.CONST.EASING_CURVE_TYPE.EASE_OUT_ELASTIC, {
+        }));var selectedDrawableResizeAnimation = new AR.PropertyAnimation(marker.markerDrawable_selected, 'scaling', null, 1.2, kMarker_AnimationDuration_Resize, new AR.EasingCurve(AR.CONST.EASING_CURVE_TYPE.EASE_OUT_ELASTIC, {
             amplitude: 2.0
         }));
-        // create AR.PropertyAnimation that animates the scaling of the title label to 1.2
         var titleLabelResizeAnimation = new AR.PropertyAnimation(marker.titleLabel, 'scaling', null, 1.2, kMarker_AnimationDuration_Resize, new AR.EasingCurve(AR.CONST.EASING_CURVE_TYPE.EASE_OUT_ELASTIC, {
             amplitude: 2.0
         }));
-        // create AR.PropertyAnimation that animates the scaling of the description label to 1.2
         var descriptionLabelResizeAnimation = new AR.PropertyAnimation(marker.descriptionLabel, 'scaling', null, 1.2, kMarker_AnimationDuration_Resize, new AR.EasingCurve(AR.CONST.EASING_CURVE_TYPE.EASE_OUT_ELASTIC, {
             amplitude: 2.0
         }));
-
-        /*
-            There are two types of AR.AnimationGroups. Parallel animations are running at the same time, sequentials are played one after another. This example uses a parallel AR.AnimationGroup.
-        */
         marker.animationGroup_selected = new AR.AnimationGroup(AR.CONST.ANIMATION_GROUP_TYPE.PARALLEL, [hideIdleDrawableAnimation, showSelectedDrawableAnimation, idleDrawableResizeAnimation, selectedDrawableResizeAnimation, titleLabelResizeAnimation, descriptionLabelResizeAnimation]);
     }
-
+    // Handler click
     marker.markerDrawable_idle.onClick = null;
     marker.markerDrawable_selected.onClick = Marker.prototype.getOnClickTrigger(marker);
-
-    // enables the direction indicator drawable for the current marker
+    // Active fleche directionnelle
     marker.directionIndicatorDrawable.enabled = true;
-
-
+    // Affichage de l'élément selectionné sur le radar
     marker.markerObject.drawables.radar = marker.radardrawablesSelected;
-
-    // starts the selected-state animation
+    // Start animation
     marker.animationGroup_selected.start();
 };
 
 Marker.prototype.setDeselected = function(marker) {
-
     marker.isSelected = false;
-
     marker.markerObject.drawables.radar = marker.radardrawables;
-
     if (marker.animationGroup_idle === null) {
-
-        // create AR.PropertyAnimation that animates the opacity to 1.0 in order to show the idle-state-drawable
+        // Marker select/deselect
         var showIdleDrawableAnimation = new AR.PropertyAnimation(marker.markerDrawable_idle, "opacity", null, 1.0, kMarker_AnimationDuration_ChangeDrawable);
-        // create AR.PropertyAnimation that animates the opacity to 0.0 in order to hide the selected-state-drawable
         var hideSelectedDrawableAnimation = new AR.PropertyAnimation(marker.markerDrawable_selected, "opacity", null, 0, kMarker_AnimationDuration_ChangeDrawable);
-        // create AR.PropertyAnimation that animates the scaling of the idle-state-drawable to 1.0
+        // Effets
         var idleDrawableResizeAnimation = new AR.PropertyAnimation(marker.markerDrawable_idle, 'scaling', null, 1.0, kMarker_AnimationDuration_Resize, new AR.EasingCurve(AR.CONST.EASING_CURVE_TYPE.EASE_OUT_ELASTIC, {
             amplitude: 2.0
         }));
-        // create AR.PropertyAnimation that animates the scaling of the selected-state-drawable to 1.0
         var selectedDrawableResizeAnimation = new AR.PropertyAnimation(marker.markerDrawable_selected, 'scaling', null, 1.0, kMarker_AnimationDuration_Resize, new AR.EasingCurve(AR.CONST.EASING_CURVE_TYPE.EASE_OUT_ELASTIC, {
             amplitude: 2.0
         }));
-        // create AR.PropertyAnimation that animates the scaling of the title label to 1.0
         var titleLabelResizeAnimation = new AR.PropertyAnimation(marker.titleLabel, 'scaling', null, 1.0, kMarker_AnimationDuration_Resize, new AR.EasingCurve(AR.CONST.EASING_CURVE_TYPE.EASE_OUT_ELASTIC, {
             amplitude: 2.0
         }));
-        // create AR.PropertyAnimation that animates the scaling of the description label to 1.0
         var descriptionLabelResizeAnimation = new AR.PropertyAnimation(marker.descriptionLabel, 'scaling', null, 1.0, kMarker_AnimationDuration_Resize, new AR.EasingCurve(AR.CONST.EASING_CURVE_TYPE.EASE_OUT_ELASTIC, {
             amplitude: 2.0
         }));
-
-        /*
-            There are two types of AR.AnimationGroups. Parallel animations are running at the same time, sequentials are played one after another. This example uses a parallel AR.AnimationGroup.
-        */
         marker.animationGroup_idle = new AR.AnimationGroup(AR.CONST.ANIMATION_GROUP_TYPE.PARALLEL, [showIdleDrawableAnimation, hideSelectedDrawableAnimation, idleDrawableResizeAnimation, selectedDrawableResizeAnimation, titleLabelResizeAnimation, descriptionLabelResizeAnimation]);
     }
-
+    // Handler click
     marker.markerDrawable_idle.onClick = Marker.prototype.getOnClickTrigger(marker);
     marker.markerDrawable_selected.onClick = null;
-
-    // disables the direction indicator drawable for the current marker
+    // Désactivation fleche directionnelle
     marker.directionIndicatorDrawable.enabled = false;
-    // starts the idle-state animation
+    // Start animation
     marker.animationGroup_idle.start();
 };
 
 Marker.prototype.isAnyAnimationRunning = function(marker) {
-
-    if (marker.animationGroup_idle === null || marker.animationGroup_selected === null) {
-        return false;
-    } else {
+    if (marker.animationGroup_idle === null || marker.animationGroup_selected === null) { return false; } 
+    else {
         if ((marker.animationGroup_idle.isRunning() === true) || (marker.animationGroup_selected.isRunning() === true)) {
             return true;
-        } else {
-            return false;
-        }
+        } else { return false; }
     }
 };
 
-// will truncate all strings longer than given max-length "n". e.g. "foobar".trunc(3) -> "foo..."
+// Trunc title
 String.prototype.trunc = function(n) {
     return this.substr(0, n - 1) + (this.length > n ? '...' : '');
 };

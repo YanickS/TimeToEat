@@ -31,7 +31,7 @@ export class ARView {
           function(fail) {
             console.log("Failed to load ARchitect World!");
           },
-          "www/assets/4_PointOfInterest_3_MultiplePois/index.html",
+          "www/assets/AR_World/index.html",
           ["geo"],
           <JSON>startupConfiguration
       );
