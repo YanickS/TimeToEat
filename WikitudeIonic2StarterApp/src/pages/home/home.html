@@ -12,61 +12,12 @@
   
   <div class="liste_restaurants">
     <ul class="list">
-      <li class="item restaurant">
+      <li class="item restaurant" *ngFor="let restaurant of restaurants">
         <div class="restaurant_details">
-          <span class="restaurant_nom">Bistrot Régent</span>
-          <span class="restaurant_typeCuisine">Cuisine traditionnelle</span>
+          <span class="restaurant_nom">{{restaurant.nom}}</span>
+          <span class="restaurant_typeCuisine">{{restaurant.type}}</span>
         </div>
-        <div class="restaurant_distance">50 m</div>
-      </li>
-      <li class="item restaurant">
-        <div class="restaurant_details">
-          <span class="restaurant_nom">O'Panda</span>
-          <span class="restaurant_typeCuisine">Cuisine asiatique</span>
-        </div>
-        <div class="restaurant_distance">150 m</div>
-      </li>
-      <li class="item restaurant">
-        <div class="restaurant_details">
-          <span class="restaurant_nom">Buffalo Grill</span>
-          <span class="restaurant_typeCuisine">Cuisine traditionnelle</span>
-        </div>
-        <div class="restaurant_distance">200 m</div>
-      </li>
-      <li class="item restaurant">
-        <div class="restaurant_details">
-          <span class="restaurant_nom">Ché moi</span>
-          <span class="restaurant_typeCuisine">Cuisine traditionnelle</span>
-        </div>
-        <div class="restaurant_distance">275 m</div>
-      </li>
-      <li class="item restaurant">
-        <div class="restaurant_details">
-          <span class="restaurant_nom">Couscous-moi</span>
-          <span class="restaurant_typeCuisine">Cuisine marocaine</span>
-        </div>
-        <div class="restaurant_distance">300 m</div>
-      </li>
-      <li class="item restaurant">
-        <div class="restaurant_details">
-          <span class="restaurant_nom">Bistrot Régent</span>
-          <span class="restaurant_typeCuisine">Cuisine traditionnelle</span>
-        </div>
-        <div class="restaurant_distance">50 m</div>
-      </li>
-      <li class="item restaurant">
-        <div class="restaurant_details">
-          <span class="restaurant_nom">O'Panda</span>
-          <span class="restaurant_typeCuisine">Cuisine asiatique</span>
-        </div>
-        <div class="restaurant_distance">150 m</div>
-      </li>
-      <li class="item restaurant">
-        <div class="restaurant_details">
-          <span class="restaurant_nom">Buffalo Grill</span>
-          <span class="restaurant_typeCuisine">Cuisine traditionnelle</span>
-        </div>
-        <div class="restaurant_distance">200 m</div>
+        <div class="restaurant_distance">{{restaurant.distance}}</div>
       </li>
     </ul>
   </div>
