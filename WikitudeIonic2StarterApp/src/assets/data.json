@@ -1,0 +1,33 @@
+[
+	{
+		"nom":"A CANTINA Brasserie Corse",
+		"type":"Corse",
+		"lat":44.84360849999999,
+		"lng":-0.5772186000000374
+	},
+	{
+	
+		"nom":"Breizh Glouton - Bistrot Breton",
+		"type":"Français",
+		"lat":44.8408503,
+		"lng":-0.571532599999955
+	},
+	{
+		"nom":"Kuzina",
+		"type":"Français",
+		"lat":44.8324269,
+		"lng":-0.5624977999999601
+	},
+	{	
+		"nom":"Casa Ferretti",
+		"type":"Italien",
+		"lat":44.8241139,
+		"lng":-0.591797100000008
+	},
+	{
+		"nom":"La Petite Savoie",
+		"type":"Savoie",
+		"lat":44.8389699,
+		"lng":-0.5698124000000462
+	}
+]
