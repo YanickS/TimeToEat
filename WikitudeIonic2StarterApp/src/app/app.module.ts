@@ -3,6 +3,7 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
+import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ARView } from '../pages/ar-view/ar-view';
 import { AgmCoreModule } from 'angular2-google-maps/core';
@@ -14,6 +15,7 @@ import { ConnectivityService } from '../providers/connectivity-service';
     MyApp,
     AboutPage,
     HomePage,
+    ItemDetailsPage,
     TabsPage,
     ARView
   ],
@@ -27,6 +29,7 @@ import { ConnectivityService } from '../providers/connectivity-service';
     MyApp,
     AboutPage,
     HomePage,
+    ItemDetailsPage,
     TabsPage,
     ARView
   ],

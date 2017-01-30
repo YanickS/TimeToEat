@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-
-import { NavController } from 'ionic-angular';
-
+import {NavController} from 'ionic-angular';
+import {ItemDetailsPage} from '../item-details/item-details';
 import {Http} from "@angular/http";
 
 @Component({
@@ -11,7 +10,7 @@ import {Http} from "@angular/http";
 
 export class HomePage {
   restaurants: any;
-
+  
   constructor(public navcontroller: NavController, public http: Http) {
     this.restaurants = [];
 
@@ -25,6 +24,12 @@ export class HomePage {
       }
     }, (error)=>{
         console.log(JSON.stringify(error));
+    });
+  }
+
+  itemSelected(item: any) {
+    this.navcontroller.push(ItemDetailsPage, {
+      item: item
     });
   }
 }
