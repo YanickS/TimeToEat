@@ -30,12 +30,12 @@ var World = {
 		// Création des markers
 		for (var currentPlaceNr = 0; currentPlaceNr < poiData.length; currentPlaceNr++) {
 			var singlePoi = {
-				"id": poiData[currentPlaceNr].id,
-				"latitude": parseFloat(poiData[currentPlaceNr].latitude),
-				"longitude": parseFloat(poiData[currentPlaceNr].longitude),
-				"altitude": parseFloat(poiData[currentPlaceNr].altitude),
-				"title": poiData[currentPlaceNr].name,
-				"description": poiData[currentPlaceNr].description
+				//"id": poiData[currentPlaceNr].id,
+				"latitude": parseFloat(poiData[currentPlaceNr].lat),
+				"longitude": parseFloat(poiData[currentPlaceNr].lng),
+				//"altitude": parseFloat(poiData[currentPlaceNr].altitude),
+				"title": poiData[currentPlaceNr].nom,
+				"description": poiData[currentPlaceNr].type
 			};
 			World.markerList.push(new Marker(singlePoi));
 		}
@@ -154,23 +154,10 @@ var World = {
 
 	// Chargement des données local
 	requestDataFromLocal: function requestDataFromLocalFn(centerPointLatitude, centerPointLongitude) {
-		var poisToCreate = 2;
 		var poiData = [];
-		// Données en durs
-		var lat = [44.8389678, 44.8651102];
-		var lon = [-0.5720312, -0.5601722];
-		var name = ["La petite savoie", "Bistrot Regen"];
-		var desc = ["Spécialité de savoie", "Brasserie"];
-		for (var i = 0; i < poisToCreate; i++) {
-			poiData.push({
-				"id": (i + 1),
-				"longitude": lon[i],
-				"latitude": lat[i],
-				"description": desc[i],
-				"name": name[i]
-			});
-		}
-		World.loadPoisFromJsonData(poiData);
+		$.getJSON( "../data.json", function(data) {
+		 	World.loadPoisFromJsonData(data);
+		});
 	},
 
 	// Retourne markers classés par distance

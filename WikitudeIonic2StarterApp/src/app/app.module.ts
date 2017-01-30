@@ -5,6 +5,9 @@ import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ARView } from '../pages/ar-view/ar-view';
+import { AgmCoreModule } from 'angular2-google-maps/core';
+import { GoogleMapsAPIWrapper } from 'angular2-google-maps/core/services/google-maps-api-wrapper';
+import { ConnectivityService } from '../providers/connectivity-service';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,9 @@ import { ARView } from '../pages/ar-view/ar-view';
     ARView
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({ apiKey: 'AIzaSyDf474RjXuiShQZcPRNxLgSzP6EVvDwG_o',
+      libraries: ['places']})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -25,6 +30,6 @@ import { ARView } from '../pages/ar-view/ar-view';
     TabsPage,
     ARView
   ],
-  providers: []
+  providers: [GoogleMapsAPIWrapper, ConnectivityService]
 })
 export class AppModule {}

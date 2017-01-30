@@ -29,5 +29,11 @@
 		"type":"Savoie",
 		"lat":44.8389699,
 		"lng":-0.5698124000000462
+	},
+	{
+		"nom":"Le Bistrot Regen",
+		"type":"Bistrot",
+		"lat":44.8651102,
+		"lng":-0.5601722
 	}
 ]
