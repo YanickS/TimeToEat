@@ -16,8 +16,9 @@ export class HomePage {
     this.restaurants = [];
 
     /** Récupération de la liste des restaurants par rapport au sélecteur de distance **/
-    this.http.get('/assets/data.json').subscribe((success) => {
+    this.http.get('assets/data.json').subscribe((success) => {
       var data = success.json();
+      console.log(data);
       for(var i = 0; i < data.length; i++){
         data[i].distance = 0;
         this.restaurants.push(data[i])
