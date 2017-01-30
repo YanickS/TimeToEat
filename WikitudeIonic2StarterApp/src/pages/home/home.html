@@ -9,11 +9,11 @@
     <h2>Liste des restaurants</h2>
     <h5>dans un rayon de <span class="distanceSelected">500m</span></h5>
   </div>
-  
+
   <div class="liste_restaurants">
     <ul class="list">
       <li class="item restaurant" *ngFor="let restaurant of restaurants">
-        <div class="restaurant_details">
+        <div class="restaurant_details" href="#/detail">
           <span class="restaurant_nom">{{restaurant.nom}}</span>
           <span class="restaurant_typeCuisine">{{restaurant.type}}</span>
         </div>
