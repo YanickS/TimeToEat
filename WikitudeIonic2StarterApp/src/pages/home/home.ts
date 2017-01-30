@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-
-import { NavController } from 'ionic-angular';
-
+import {NavController} from 'ionic-angular';
+import {ItemDetailsPage} from '../item-details/item-details';
 import {Http} from "@angular/http";
 
 @Component({
@@ -58,5 +57,11 @@ export class HomePage {
       }, 
       error => { console.log('code : ' + error.code + 'message: ' + error.message); }
     );
+  }
+
+  itemSelected(item: any) {
+    this.navcontroller.push(ItemDetailsPage, {
+      item: item
+    });
   }
 }
