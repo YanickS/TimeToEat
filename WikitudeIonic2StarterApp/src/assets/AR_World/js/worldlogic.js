@@ -43,6 +43,7 @@ var World = {
 		// Set slider distance
 		$("#panel-distance-range").val(2500);
 		$("#panel-distance-range").slider("refresh");
+		World.updateRangeValues();
 	},
 
 	updateDistanceToUserValues: function updateDistanceToUserValuesFn() {
