@@ -1,18 +1,12 @@
 <ion-header>
+
   <ion-navbar color="primary">
     <ion-title>Map</ion-title>
   </ion-navbar>
-</ion-header>
-<ion-content class="AboutPage">
-  <ion-fab left bottom>
-    <button ion-fab class="fab-map" (click)="getDirections()">
-      <ion-icon name="navigate"></ion-icon>
-    </button>
-  </ion-fab>
 
-  <ion-item>
-    <ion-input id="autocomplete" type="text" name="title" placeholder="Enter Address"></ion-input>
-  </ion-item>
+</ion-header>
+
+<ion-content class="MapPage">
 
   <sebm-google-map id="map" [latitude]="map.lat" [longitude]="map.lng" [zoom]="map.zoom" >
     <sebm-google-map-marker [latitude]="map.lat" [longitude]="map.lng">
@@ -21,4 +15,5 @@
       </sebm-google-map-info-window>
     </sebm-google-map-marker>
   </sebm-google-map>
+
 </ion-content>
