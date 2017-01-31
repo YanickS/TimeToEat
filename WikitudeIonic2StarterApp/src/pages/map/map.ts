@@ -7,9 +7,9 @@ declare var google:any;
 import { ConnectivityService } from '../../providers/connectivity-service';
 
 @Component({
-  templateUrl: 'about.html'
+  templateUrl: 'map.html'
 })
-export class AboutPage {
+export class MapPage {
 
   map: any;
   firstTime : boolean = true;
