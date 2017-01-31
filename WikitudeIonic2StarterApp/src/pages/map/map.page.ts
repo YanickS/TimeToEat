@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 
 import { IMarker, IPoint } from './interfaces';
 
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+
 @Component({
   templateUrl: 'map.html'
 })
@@ -10,7 +13,7 @@ export class MapPage {
   public origin: IPoint;
   public zoom: number;
 
-  constructor() {
+  constructor(public http: Http) {
     this.initMarkers();
     this.origin = {
       lat: 51.673858,
@@ -24,7 +27,18 @@ export class MapPage {
   }
 
   private initMarkers(): void {
-    this.markers = [{
+    this.http.get('assets/data.json')
+      .map((res) => res.json())
+      .subscribe(data => {
+        for(let marker of data) {
+          this.markers = [{lat: marker.lat, lng: marker.lng, label: marker.nom}];
+        }
+      });
+
+
+
+
+    /*this.markers = [{
       lat: 51.673858,
       lng: 7.815982,
       label: 'A'
@@ -36,6 +50,6 @@ export class MapPage {
       lat: 51.723858,
       lng: 7.895982,
       label: 'C'
-    }];
+    }];*/
   }
 }
