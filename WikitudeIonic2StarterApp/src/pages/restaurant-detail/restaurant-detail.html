@@ -14,13 +14,13 @@
     <button (click)="openMap(restaurant)">Voir sur la map</button>
     <button (click)="launch(restaurant.lafourchette)">Lien internet</button>
   </div>
-  <div id="zone_description">
+  <div id="zone_description" *ngIf="restaurant.description !== ''">
     <h5>Description du restaurant</h5>
     <p>{{restaurant.description}}</p>
     <p>{{restaurant.description_2}}</p>
     <p>{{restaurant.description_3}}</p>
   </div>
-  <div id="zone_horaires">
+  <div id="zone_horaires" *ngIf="restaurant.horaires_dejeuner !== ''">
     <h5>Horaires</h5>
     <p>{{restaurant.horaires_dejeuner}}</p>
     <p>{{restaurant.horaires_diner}}</p>
