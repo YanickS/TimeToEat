@@ -52,11 +52,14 @@ var World = {
 		}
 	},
 
+	close: function close(){
+		document.location = "architectsdk://actionButton?action=close";
+	},
+
 	// Redirection vers native screen
 	onPoiDetailMoreButtonClicked: function onPoiDetailMoreButtonClickedFn() {
-		//var currentMarker = World.currentMarker;
-		//var architectSdkUrl = "architectsdk://markerselected?id=" + encodeURIComponent(currentMarker.poiData.id) + "&title=" + encodeURIComponent(currentMarker.poiData.title) + "&description=" + encodeURIComponent(currentMarker.poiData.description);
-		//document.location = architectSdkUrl;
+		var currentMarker = World.currentMarker;
+		document.location = "architectsdk://button?action=redirect&title=" + encodeURIComponent(currentMarker.poiData.title);
 	},
 
 	// Appellée lors de ArchitectView.setLocation()

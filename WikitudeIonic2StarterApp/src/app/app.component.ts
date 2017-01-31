@@ -13,6 +13,7 @@ export class MyApp {
   rootPage = TabsPage;
 
   constructor(platform: Platform) {
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -38,23 +39,14 @@ export class MyApp {
        * WikitudeIonic2StarterApp/www/assets/3_3dModels_6_3dModelAtGeoLocation/js/3dmodelatgeolocation.js*/
       // set the function to be called, when a "communication" is indicated from the AR View  
       WikitudePlugin.setOnUrlInvokeCallback(function(url) {
-
-        // this an example of how to receive a call from a function in the Wikitude SDK (Wikitude SDK --> Ionic2)
-        if (url.indexOf('captureScreen') > -1) {
-            WikitudePlugin.captureScreen(
-                function(absoluteFilePath) {
-                    console.log("snapshot stored at:\n" + absoluteFilePath);
-
-                    // this an example of how to call a function in the Wikitude SDK (Ionic2 app --> Wikitude SDK)
-                    WikitudePlugin.callJavaScript("World.testFunction('Screenshot saved at: " + absoluteFilePath +"');");
-                },
-                function (errorMessage) {
-                    console.log(errorMessage);
-                },
-                true, null
-            );
+        if (url.indexOf('redirect') > -1) {
+          alert("more detail");
+          //this.navcontroller.push(ItemDetailsPage);
+        } else if (url.indexOf('close') > -1) {
+          alert("close");
+          WikitudePlugin.close();
         } else {
-            alert(url + "not handled");
+          console.log("not handle");
         }
       });
 
