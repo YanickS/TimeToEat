@@ -2,38 +2,67 @@
 	{
 		"nom":"A CANTINA Brasserie Corse",
 		"type":"Corse",
+		"adresse":"19 Rue Mably 33000 Bordeaux France",
 		"lat":44.84360849999999,
-		"lng":-0.5772186000000374
+		"lng":-0.5772186000000374,
+		"description":"PLEIN CENTRE-VILLE – Peut-être connaissiez-vous déjà A Cantina, rue des Bahutiers qui n’est pas inconnu des amateurs bordelais de tapas. Cette adresse a désormais une petite sœur au 19 rue Mably : La Table A Cantina. LA CORSE INVITÉE – Au cœur de la capitale girondine, vous allez pouvoir découvrir des produits corses traditionnels. INCONTOURNABLES – On n’y vient pas sans fondre pour la charcuterie, les huiles d’olives mais aussi pour ces plats plus originaux comme le veau tigré ou encore la nepita.",
+		"horaires":"Déjeuner : de 12h à 14h (sauf dimanche et lundi) Diner : de 19h30 à 22h30 tous les jours",
+		"img": "https://u.tfstatic.com/restaurant_photos/702/59702/169/612/la-table-a-cantina-entree-6d03e.jpg",
+		"lafourchette":"https://www.lafourchette.com/restaurant/a-cantina-brasserie-corse/59702"
 	},
 	{
-	
-		"nom":"Breizh Glouton - Bistrot Breton",
+		"nom":"Breizh Glouton",
 		"type":"Français",
+		"adresse":"15 Rue des Frères Bonie 33000 Bordeaux France",
 		"lat":44.8408503,
-		"lng":-0.571532599999955
+		"lng":-0.571532599999955,
+		"description":"HYPER CENTRE – Idéalement placé dans le cœur de ville à Bordeaux, à deux pas de la cathédrale et du tribunal, le restaurant Bistrot Glouton cultive l’art de bien recevoir. Prenez place dans le cadre sympathique ou sur la terrasse l’été… et laissez-vous aller à la dégustation dans une ambiance chaleureuse.  MAÎTRISE ET GOUT – Des produits rigoureusement sélectionnés, une maîtrise technique et culinaire acquise au long cours (et dans de prestigieuses maisons), des recettes gourmandes, originales et authentiques… la cuisine typée bistronomique fait mouche et régale tous les palais.  ACCORDS VINS-METS – A l’image des propositions de la carte des mets, les vins sont soigneusement sélectionnés et se marient comme il se doit aux plats.",
+		"horaires":"Ouverture 7J/7 Déjeuner : de 12h à 14h Diner : de 19h30 à 22h",
+		"img": "https://u.tfstatic.com/restaurant_photos/684/63684/169/612/bistrot-glouton-vue-salle-02df9.jpg",
+		"lafourchette":"https://www.lafourchette.com/restaurant/bistrot-glouton/63684"
 	},
 	{
 		"nom":"Kuzina",
 		"type":"Français",
+		"adresse":"22, rue Porte de la Monnaie 33800 Bordeaux France",
 		"lat":44.8324269,
-		"lng":-0.5624977999999601
+		"lng":-0.5624977999999601,
+		"description":"PLEIN CENTRE-VILLE – Peut-être connaissiez-vous déjà A Cantina, rue des Bahutiers qui n’est pas inconnu des amateurs bordelais de tapas. Cette adresse a désormais une petite sœur au 19 rue Mably : La Table A Cantina. LA CORSE INVITÉE – Au cœur de la capitale girondine, vous allez pouvoir découvrir des produits corses traditionnels. INCONTOURNABLES – On n’y vient pas sans fondre pour la charcuterie, les huiles d’olives mais aussi pour ces plats plus originaux comme le veau tigré ou encore la nepita.",
+		"horaires":"Déjeuner : de 12h à 14h (sauf dimanche et lundi) Diner : de 19h30 à 22h30 tous les jours",
+		"img": "https://u.tfstatic.com/restaurant_photos/702/59702/169/612/la-table-a-cantina-entree-6d03e.jpg",
+		"lafourchette":"https://www.lafourchette.com/restaurant/a-cantina-brasserie-corse/59702"
 	},
-	{	
+	{
 		"nom":"Casa Ferretti",
 		"type":"Italien",
+		"adresse":"19 Rue Mably 33000 Bordeaux France",
 		"lat":44.8241139,
-		"lng":-0.591797100000008
+		"lng":-0.591797100000008,
+		"description":"AMBIANCE - Le restaurant Kuzina, installé à Bordeaux, vous reçoit le temps d´un repas gourmand dans un cadre moderne. Le mobilier est en bois et la salle est très lumineuse. CÔTÉ TABLE - le Chef propose une cuisine inspirée du régime crétois, à base d'huile d'olive, de poisson, de légumes et de fruits. Pour satisfaire votre palais aiguisé, il compose ses mets uniquement avec des produits locaux et s'enorgueillit d’œuvrer pour le développement durable, en faisant travailler les petits producteurs et en évitant les transports inutiles. ÉVÉNEMENTS - Pour vos événements festifs, l'établissement permet la privatisation du lieu. Une adresse originale à la démarche écologique, à connaître au plus vite !",
+		"horaires":"Déjeuner : de 12h à 14h (sauf dimanche, lundi et mardi) Dîner : de 19h à 22h30 (sauf dimanche et lundi)",
+		"img": "https://u.tfstatic.com/restaurant_photos/387/16387/169/612/kuzina-devanture-5b66b.jpg",
+		"lafourchette":"https://www.lafourchette.com/restaurant/kuzina/16387"
 	},
 	{
 		"nom":"La Petite Savoie",
 		"type":"Savoie",
+		"adresse":"27, rue des Argentiers 33000 Bordeaux France",
 		"lat":44.8389699,
-		"lng":-0.5698124000000462
+		"lng":-0.5698124000000462,
+		"description":"Pour les amoureux de la montagne pas besoin de se déplacer pour savourer les spécialités. Le restaurant savoyard La Petite Savoie à Bordeaux nous emmène directement à la montagne avec la raclette, la fondue, la reblochonnade, la tartiflette et autres plats le tout à bas prix et dans une ambiance chaleureuse.",
+		"horaires":"",
+		"img": "",
+		"lafourchette":"https://www.lafourchette.com/restaurant/la-petite-savoie/43397"
 	},
 	{
-		"nom":"Le Bistrot Regen",
+		"nom":"Le Bistrot Regent",
 		"type":"Bistrot",
+		"adresse":"Quai Armand Lalande, 33000, Bordeaux, France",
 		"lat":44.8651102,
-		"lng":-0.5601722
+		"lng":-0.5601722,
+		"description":"",
+		"horaires":"Déjeuner : de 12h à 14h Diner : de 19h30 à 22h45 tous les jours",
+		"img": "",
+		"lafourchette":"https://www.tripadvisor.fr/Restaurant_Review-g187079-d8130512-Reviews-Bistro_Regent-Bordeaux_Gironde_Nouvelle_Aquitaine.html"
 	}
 ]
