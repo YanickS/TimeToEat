@@ -1,7 +1,10 @@
-.MapPage #map
-{
-  width: 100%;
+page-home {
+  #map{
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.scroll{
   height: 100%;
-  opacity: 0;
-  transition: opacity 150ms ease-in
 }

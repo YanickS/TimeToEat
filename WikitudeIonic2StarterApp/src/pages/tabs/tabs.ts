@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Tabs} from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { ARView } from '../ar-view/ar-view';
-import { MapPage } from '../map/map';
+import { MapPage } from '../map/map.page';
 
 @Component({
   templateUrl: 'tabs.html'

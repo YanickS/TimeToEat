@@ -1,18 +1,23 @@
 <ion-header>
 
-  <ion-navbar color="primary">
-    <ion-title>Map</ion-title>
+  <ion-navbar>
+    <ion-title>Carte</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content class="MapPage">
 
-  <sebm-google-map id="map" [latitude]="map.lat" [longitude]="map.lng" [zoom]="map.zoom" >
-    <sebm-google-map-marker [latitude]="map.lat" [longitude]="map.lng">
-      <sebm-google-map-info-window>
-        <strong>My location</strong>
-      </sebm-google-map-info-window>
+  <sebm-google-map style="width: 100%; height: 100%;"
+                   [latitude]="origin.lat"
+                   [longitude]="origin.lng"
+                   [zoom]="zoom">
+    <sebm-google-map-marker
+      *ngFor="let m of markers"
+      (markerClick)="clickedMarker(m.label)"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      [label]="m.label">
     </sebm-google-map-marker>
   </sebm-google-map>
 

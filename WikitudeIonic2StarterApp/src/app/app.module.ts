@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { MapPage } from '../pages/map/map';
+import { MapPage } from '../pages/map/map.page';
 import { HomePage } from '../pages/home/home';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { TabsPage } from '../pages/tabs/tabs';
