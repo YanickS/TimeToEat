@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
+import { MapPage } from '../pages/map/map';
 import { HomePage } from '../pages/home/home';
-import { ItemDetailsPage } from '../pages/item-details/item-details';
+import { RestaurantDetailPage } from '../pages/restaurant-detail/restaurant-detail';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ARView } from '../pages/ar-view/ar-view';
 import { AgmCoreModule } from 'angular2-google-maps/core';
@@ -13,9 +13,9 @@ import { ConnectivityService } from '../providers/connectivity-service';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
+    MapPage,
     HomePage,
-    ItemDetailsPage,
+    RestaurantDetailPage,
     TabsPage,
     ARView
   ],
@@ -27,9 +27,9 @@ import { ConnectivityService } from '../providers/connectivity-service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    MapPage,
     HomePage,
-    ItemDetailsPage,
+    RestaurantDetailPage,
     TabsPage,
     ARView
   ],
