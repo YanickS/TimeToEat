@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams} from 'ionic-angular';
 import { Platform } from 'ionic-angular';
-import { MapPage } from '../map/map';
+import { MapPage } from '../map/map.page';
 
 declare var cordova: any;
 
@@ -13,7 +13,7 @@ export class RestaurantDetailPage {
   restaurant: any;
 
   constructor(public navcontroller: NavController, public navparams: NavParams, public platform: Platform) {
-    this.restaurant = navparams.get('restaurant');      
+    this.restaurant = navparams.get('restaurant');
   }
 
   openMap(restaurant: any) {

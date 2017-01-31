@@ -9,15 +9,15 @@ export class ConnectivityService {
     this.onDevice = this.platform.is('cordova');
   }
   isOnline(): boolean {
-    if(this.onDevice && Network.type){
-      return Network.type !== type.NONE;
+    if(this.onDevice && Network.connection){
+      return Network.connection !== type.NONE;
     } else {
       return navigator.onLine;
     }
   }
   isOffline(): boolean {
-    if(this.onDevice && Network.type){
-      return Network.type === type.NONE;
+    if(this.onDevice && Network.connection){
+      return Network.connection === type.NONE;
     } else {
       return !navigator.onLine;
     }
