@@ -35,7 +35,7 @@ export class HomePage {
   constructor(public navcontroller: NavController, public http: Http) {
     this.restaurants = [];
     this.filteredRestaurants = [];
-    this.brightness = 3;
+    this.brightness = 2500;
     // Get current location
     navigator.geolocation.getCurrentPosition(
       position => { // success
@@ -48,7 +48,7 @@ export class HomePage {
           for(var i = 0; i < data.length; i++){
             data[i].distance = this.dist(this.currentLocation.latitude, this.currentLocation.longitude, data[i].lat, data[i].lng);
             this.restaurants.push(data[i]);
-            if(data[i].distance <= this.brightness)
+            if(data[i].distance <= (this.brightness/1000))
               this.filteredRestaurants.push(data[i]);
           }
         }, (error)=>{
@@ -57,6 +57,14 @@ export class HomePage {
       }, 
       error => { console.log('code : ' + error.code + 'message: ' + error.message); }
     );
+  }
+
+  updateList(){
+    this.filteredRestaurants = [];
+    for(var i = 0; i < this.restaurants.length; i++){
+      if(this.restaurants[i].distance <= (this.brightness/1000))
+        this.filteredRestaurants.push(this.restaurants[i]);
+      }
   }
 
   itemSelected(item: any) {

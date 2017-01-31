@@ -7,7 +7,7 @@
 <ion-content padding>
   <div class="entete">
     <h2>Liste des restaurants</h2>
-    <h5>dans un rayon de <span class="distanceSelected">500m</span></h5>
+    <h5>dans un rayon de <span class="distanceSelected">{{this.brightness}} m</span></h5>
   </div>
 
   <div class="liste_restaurants">
@@ -24,7 +24,7 @@
 
   <div class="filtre">
     <div class="list">
-           <ion-range min="1" max="5" step="1" pin="true" snaps="true" [(ngModel)]="brightness">
+           <ion-range min="0" max="5000" step="100" pin="true" snaps="true" [(ngModel)]="brightness" (ngModelChange)="updateList()">
              <ion-icon range-left name="pin"></ion-icon>
              <ion-icon small range-right name="pin"></ion-icon>
            </ion-range>
