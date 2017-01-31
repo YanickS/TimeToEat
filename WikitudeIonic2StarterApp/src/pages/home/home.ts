@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {NavController} from 'ionic-angular';
-import {ItemDetailsPage} from '../item-details/item-details';
-import {Http} from "@angular/http";
+import { Http } from "@angular/http";
+import { NavController } from 'ionic-angular';
+import { RestaurantDetailPage } from '../restaurant-detail/restaurant-detail';
 
 @Component({
   selector: 'page-home',
@@ -18,7 +18,7 @@ export class HomePage {
   toRad(value) {
     return value * Math.PI / 180;
   }
-  
+
   dist(lat1, lon1, lat2, lon2) {
     var R = 6371; // km
     var dLat = this.toRad(lat2-lat1);
@@ -26,8 +26,8 @@ export class HomePage {
     var newLat1 = this.toRad(lat1);
     var newLat2 = this.toRad(lat2);
 
-    var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(newLat1) * Math.cos(newLat2); 
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(newLat1) * Math.cos(newLat2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
     var d = R * c;
     return Math.round(d*100)/100;
   }
@@ -54,7 +54,7 @@ export class HomePage {
         }, (error)=>{
             console.log(JSON.stringify(error));
         });
-      }, 
+      },
       error => { console.log('code : ' + error.code + 'message: ' + error.message); }
     );
   }
@@ -67,9 +67,9 @@ export class HomePage {
       }
   }
 
-  itemSelected(item: any) {
-    this.navcontroller.push(ItemDetailsPage, {
-      item: item
+  restaurantSelected(restaurant: any) {
+    this.navcontroller.push(RestaurantDetailPage, {
+      restaurant: restaurant
     });
   }
 }
