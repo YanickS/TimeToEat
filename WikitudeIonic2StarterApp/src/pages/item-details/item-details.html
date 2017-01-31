@@ -11,12 +11,10 @@
     <img src={{item.img}} />
   </div>
   <div>
-    <h5>Voir sur la map</h5>
-    <p>{{item.adresse}}</p>
+    <button (click)="openMap(item)">Voir sur la map</button>
   </div>
   <div>
-    <h5>Voir sur l'internet</h5>
-    <p>{{item.lafourchette}}</p>
+    <a href="{{item.lafourchette}}">Voir sur l'internet</a>
   </div>
   <div>
     <h5>Description du restaurant</h5>

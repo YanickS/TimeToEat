@@ -11,4 +11,10 @@ export class ItemDetailsPage {
   constructor(public navcontroller: NavController, public navparams: NavParams) {
     this.item = navparams.get('item');
   }
+
+  openMap(item: any) {
+    this.navcontroller.push(AboutPage, {
+      item: item
+    });
+  }
 }
