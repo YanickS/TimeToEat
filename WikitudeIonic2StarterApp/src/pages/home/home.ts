@@ -44,7 +44,6 @@ export class HomePage {
         // Récupération de la liste des restaurants par rapport au sélecteur de distance
         this.http.get('assets/data.json').subscribe((success) => {
           var data = success.json();
-          console.log(data);
           for(var i = 0; i < data.length; i++){
             data[i].distance = this.dist(this.currentLocation.latitude, this.currentLocation.longitude, data[i].lat, data[i].lng);
             this.restaurants.push(data[i]);
@@ -67,9 +66,9 @@ export class HomePage {
       }
   }
 
-  restaurantSelected(restaurant: any) {
+  restaurantSelected(id: number) {
     this.navcontroller.push(RestaurantDetailPage, {
-      restaurant: restaurant
+      restaurant_id: id
     });
   }
 }

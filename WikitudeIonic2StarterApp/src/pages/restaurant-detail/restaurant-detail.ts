@@ -13,7 +13,7 @@ export class RestaurantDetailPage {
   restaurant: any;
 
   constructor(public navcontroller: NavController, public navparams: NavParams, public platform: Platform) {
-    this.restaurant = navparams.get('restaurant');
+    this.restaurant = navparams.get('restaurant_id');
   }
 
   openMap(restaurant: any) {

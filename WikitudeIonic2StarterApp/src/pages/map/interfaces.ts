@@ -4,5 +4,6 @@ export interface IPoint {
 }
 
 export interface IMarker extends IPoint {
+  id: number;
   label?: string;
 }
