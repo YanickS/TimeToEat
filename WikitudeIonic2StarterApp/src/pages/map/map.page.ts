@@ -14,10 +14,11 @@ export class MapPage {
   public zoom: number;
 
   constructor(public http: Http) {
+    console.log(this.markers);
     this.initMarkers();
     this.origin = {
-      lat: 51.673858,
-      lng: 7.815982
+      lat: 44.864838,
+      lng: -0.560076
     };
     this.zoom = 8;
   }
@@ -27,14 +28,15 @@ export class MapPage {
   }
 
   private initMarkers(): void {
+    console.log(this.markers);
     this.http.get('assets/data.json')
       .map((res) => res.json())
       .subscribe(data => {
         for(let marker of data) {
-          this.markers = [{lat: marker.lat, lng: marker.lng, label: marker.nom}];
+          this.markers.concat([{lat: marker.lat, lng: marker.lng, label: marker.nom}]);
         }
+        console.log(this.markers);
       });
-
 
 
 
