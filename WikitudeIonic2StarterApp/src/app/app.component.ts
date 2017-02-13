@@ -30,23 +30,21 @@ export class MyApp {
           function(fail) {
             console.log("Your platform failed to run AR/Wikitude: "+fail);
           },
-          [WikitudePlugin.FeatureGeo] // or WikitudePlugin.Feature2DTracking
-      );
+          [WikitudePlugin.FeatureGeo] // or WikitudePlugin.Feature2DTracking 
+      );                  
 
-      /** The Wikitude AR View creates it's own context. Communication between the main Ionic App and Wikitude SDK works
-       * through the function below for the direction Ionic2 app --> Wikitude SDK
-       * For calls from Wikitude SDK --> Ionic2 app see the captureScreen example in
+      /** The Wikitude AR View creates it's own context. Communication between the main Ionic App and Wikitude SDK works 
+       * through the function below for the direction Ionic2 app --> Wikitude SDK 
+       * For calls from Wikitude SDK --> Ionic2 app see the captureScreen example in 
        * WikitudeIonic2StarterApp/www/assets/3_3dModels_6_3dModelAtGeoLocation/js/3dmodelatgeolocation.js*/
-      // set the function to be called, when a "communication" is indicated from the AR View
+      // set the function to be called, when a "communication" is indicated from the AR View  
       WikitudePlugin.setOnUrlInvokeCallback(function(url) {
         if (url.indexOf('redirect') > -1) {
           alert("more detail");
           //this.navcontroller.push(ItemDetailsPage);
         } else if (url.indexOf('close') > -1) {
+          alert("close");
           WikitudePlugin.close();
-          setTimeout(function(){
-            this.getRootNav().getActiveChildNav().select(1);
-          },2000);
         } else {
           console.log("not handle");
         }
@@ -58,7 +56,7 @@ export class MyApp {
       WikitudePlugin.onWikitudeOK = function() {
           console.log("Things went ok.");
       }
-
+      
       /**
        * Define the generic failure callback
        */
@@ -66,7 +64,7 @@ export class MyApp {
           console.log("Something went wrong");
       }
 
-      // Just as an example: set the location within the Wikitude SDK, if you need this (You can get the geo coordinates by using ionic native
+      // Just as an example: set the location within the Wikitude SDK, if you need this (You can get the geo coordinates by using ionic native 
       // GeoLocation plugin: http://ionicframework.com/docs/v2/native/geolocation/
       //WikitudePlugin.setLocation(47, 13, 450, 1);
 
@@ -75,7 +73,7 @@ export class MyApp {
           () => {
               console.log("Back button has been pressed...");
           }
-      );
+      );                  
       */
 
     });

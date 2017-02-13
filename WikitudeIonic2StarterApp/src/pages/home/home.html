@@ -12,7 +12,7 @@
 
   <div class="liste_restaurants">
     <ul class="list">
-      <li class="item restaurant" *ngFor="let restaurant of filteredRestaurants" (click)="restaurantSelected(restaurant.id)">
+      <li class="item restaurant" *ngFor="let restaurant of filteredRestaurants" (click)="restaurantSelected(restaurant)">
         <div class="restaurant_details">
           <span class="restaurant_nom">{{restaurant.nom}}</span>
           <span class="restaurant_typeCuisine">{{restaurant.type}}</span>

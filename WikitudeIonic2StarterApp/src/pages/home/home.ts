@@ -9,17 +9,17 @@ import { RestaurantDetailPage } from '../restaurant-detail/restaurant-detail';
 })
 
 export class HomePage {
-  public restaurants: any;
-  private currentLocation: any;
-  public filteredRestaurants: any;
-  private brightness: number;
+  restaurants: any;
+  currentLocation: any;
+  filteredRestaurants: any;
+  brightness: number;
 
   // Converts numeric degrees to radians
-  private toRad(value) {
+  toRad(value) {
     return value * Math.PI / 180;
   }
 
-  private dist(lat1, lon1, lat2, lon2) {
+  dist(lat1, lon1, lat2, lon2) {
     var R = 6371; // km
     var dLat = this.toRad(lat2-lat1);
     var dLon = this.toRad(lon2-lon1);
@@ -44,6 +44,7 @@ export class HomePage {
         // Récupération de la liste des restaurants par rapport au sélecteur de distance
         this.http.get('assets/data.json').subscribe((success) => {
           var data = success.json();
+          console.log(data);
           for(var i = 0; i < data.length; i++){
             data[i].distance = this.dist(this.currentLocation.latitude, this.currentLocation.longitude, data[i].lat, data[i].lng);
             this.restaurants.push(data[i]);
@@ -58,7 +59,7 @@ export class HomePage {
     );
   }
 
-  private updateList(){
+  updateList(){
     this.filteredRestaurants = [];
     for(var i = 0; i < this.restaurants.length; i++){
       if(this.restaurants[i].distance <= (this.brightness/1000))
@@ -66,9 +67,9 @@ export class HomePage {
       }
   }
 
-  public restaurantSelected(id: number) {
+  restaurantSelected(restaurant: any) {
     this.navcontroller.push(RestaurantDetailPage, {
-      restaurant_id: id
+      restaurant: restaurant
     });
   }
 }
