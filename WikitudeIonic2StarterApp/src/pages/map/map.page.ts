@@ -27,12 +27,14 @@ export class MapPage {
   }
 
   private initMarkers(): void {
+    console.log(this.markers);
     this.http.get('assets/data.json')
       .map((res) => res.json())
       .subscribe(data => {
         for(let marker of data) {
           this.markers = [{lat: marker.lat, lng: marker.lng, label: marker.nom}];
         }
+        console.log(this.markers);
       });
 
 

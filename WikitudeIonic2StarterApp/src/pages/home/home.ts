@@ -59,7 +59,11 @@ export class HomePage {
     );
   }
 
+<<<<<<< HEAD
   updateList(){
+=======
+  public updateList(){
+>>>>>>> df43cd6e985178bc3e9d2fa6f8cabcb8b96f6a7f
     this.filteredRestaurants = [];
     for(var i = 0; i < this.restaurants.length; i++){
       if(this.restaurants[i].distance <= (this.brightness/1000))
