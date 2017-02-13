@@ -9,17 +9,17 @@ import { RestaurantDetailPage } from '../restaurant-detail/restaurant-detail';
 })
 
 export class HomePage {
-  restaurants: any;
-  currentLocation: any;
-  filteredRestaurants: any;
-  brightness: number;
+  public restaurants: any;
+  private currentLocation: any;
+  public filteredRestaurants: any;
+  private brightness: number;
 
   // Converts numeric degrees to radians
-  toRad(value) {
+  private toRad(value) {
     return value * Math.PI / 180;
   }
 
-  dist(lat1, lon1, lat2, lon2) {
+  private dist(lat1, lon1, lat2, lon2) {
     var R = 6371; // km
     var dLat = this.toRad(lat2-lat1);
     var dLon = this.toRad(lon2-lon1);
@@ -58,7 +58,7 @@ export class HomePage {
     );
   }
 
-  updateList(){
+  private updateList(){
     this.filteredRestaurants = [];
     for(var i = 0; i < this.restaurants.length; i++){
       if(this.restaurants[i].distance <= (this.brightness/1000))
@@ -66,7 +66,7 @@ export class HomePage {
       }
   }
 
-  restaurantSelected(id: number) {
+  public restaurantSelected(id: number) {
     this.navcontroller.push(RestaurantDetailPage, {
       restaurant_id: id
     });
